@@ -1,0 +1,14 @@
+git:
+  fctm:
+    branch:
+    hash:
+    main_branch: "main"
+    main_hash:
+slurm:
+  account:
+  job_id:
+  job_array_task_id:
+  job_name:
+system:
+  hostname:
+  username:

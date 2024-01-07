@@ -1,0 +1,5 @@
+- Preview release [v0.1.0.dev0] on Nov.20th 2023
+    Initial fctm integration released for preview.
+    m650705 and m65181 are integrated for featur reduction and restoration.
+
+ - Release [v1.0.0] on Dec.8th 2023

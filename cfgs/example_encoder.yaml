@@ -1,0 +1,11 @@
+defaults:
+  - paths: default
+  - env: default
+  - misc: default
+  - codec: fctm
+  - _self_
+
+inspection_mode: False
+codec:
+  input_feature_tensors: "test.h5" # can be replaced with another file format (not necessarily to use torch)
+
