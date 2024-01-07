@@ -1,0 +1,188 @@
+paths:
+  _common_root: ./logs
+  _run_root: /home/yhee/Nvme_4T_1/proj/exps/fctm-etri
+  configs: ${codec.output_dir}/configs
+  src: ${codec.output_dir}/src
+env:
+  git:
+    compressai:
+      branch: null
+      hash: null
+      main_branch: master
+      main_hash: null
+    compressai_vision:
+      branch: null
+      hash: null
+      main_branch: main
+      main_hash: null
+  slurm:
+    account: null
+    job_id: null
+    job_array_task_id: null
+    job_name: null
+  system:
+    hostname: null
+    username: null
+misc:
+  device: cpu
+  seed: 1234
+dataset:
+  type: Detectron2Dataset
+  datacatalog: SFUHW
+  config:
+    root: /home/yhee/Nvme_4T_1/fcm_testdata/SFU_HW_Obj/Traffic_2560x1600_30_val
+    dataset_name: sfu-hw-Traffic_2560x1600_30_val
+    imgs_folder: images
+    annotation_file: annotations/Traffic_2560x1600_30_val.json
+    seqinfo: seqinfo.ini
+    ext: png
+  settings:
+    patch_size:
+    - 512
+    - 512
+    ret_name: false
+    use_BGR: false
+  transforms:
+  - Resize:
+      size: ${....settings.patch_size}
+  - ToTensor: {}
+  loader:
+    shuffle: false
+    batch_size: 1
+    num_workers: 2
+evaluator:
+  type: COCO-EVAL
+  output: ${pipeline.evaluation.evaluation_dir}
+  eval_criteria: AP50
+vision_model:
+  arch: faster_rcnn_X_101_32x8d_FPN_3x
+  faster_rcnn_R_50_FPN_3x:
+    cfg: models/detectron2/configs/COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml
+    weight: weights/detectron2/COCO-Detection/faster_rcnn_R_50_FPN_3x/137849458/model_final_280758.pkl
+    splits:
+    - p2
+    - p3
+    - p4
+    - p5
+  faster_rcnn_X_101_32x8d_FPN_3x:
+    cfg: models/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml
+    weight: weights/detectron2/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x/139173657/model_final_68b088.pkl
+    splits:
+    - p2
+    - p3
+    - p4
+    - p5
+  mask_rcnn_R_50_FPN_3x:
+    cfg: models/detectron2/configs/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml
+    weight: weights/detectron2/COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x/137849600/model_final_f10217.pkl
+    splits:
+    - p2
+    - p3
+    - p4
+    - p5
+  mask_rcnn_X_101_32x8d_FPN_3x:
+    cfg: models/detectron2/configs/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x.yaml
+    weight: weights/detectron2/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x/139653917/model_final_2d9806.pkl
+    splits:
+    - p2
+    - p3
+    - p4
+    - p5
+  jde_1088x608:
+    cfg: models/Towards-Realtime-MOT/cfg/yolov3_1088x608.cfg
+    weight: weights/jde/jde.1088x608.uncertainty.pt
+    iou_thres: 0.5
+    conf_thres: 0.5
+    nms_thres: 0.4
+    min_box_area: 200
+    track_buffer: 30
+    frame_rate: 30
+    splits:
+    - 36
+    - 61
+    - 74
+pipeline:
+  name: split-inference
+  type: video
+  output_dir_root: ${paths._run_root}/${.name}-${.type}
+  nn_task_part1:
+    load_features: false
+    load_features_when_available: false
+    dump_features: false
+    generate_features_only: false
+    feature_dir: ${..output_dir_root}/features/${dataset.datacatalog}/${dataset.config.dataset_name}
+  codec:
+    encode_only: false
+    decode_only: false
+    codec_output_dir: ${codec.output_dir}/codec_output
+    bitstream_name: ${codec.bitstream_name}
+    skip_n_frames: 0
+    n_frames_to_be_encoded: -1
+  nn_task_part2:
+    dump_results: false
+    output_results_dir: ${codec.output_dir}/output_results
+  conformance:
+    save_conformance_files: false
+    subsample_ratio: 9
+    conformance_files_path: ${codec.output_dir}/conformance_files/
+  evaluation:
+    bypass: false
+    dump: true
+    evaluation_dir: ${codec.output_dir}/evaluation
+codec:
+  type: fctm
+  eval_encode: bitrate
+  experiment: _ce235_sfu
+  output_dir: ${pipeline.output_dir_root}/${.type}${.experiment}/${dataset.datacatalog}/${dataset.config.dataset_name}/qp${codec.tools.inner_codec.enc_configs.qp}
+  bitstream_name: ${dataset.config.dataset_name}_qp${codec.tools.inner_codec.enc_configs.qp}
+  verbosity: 0
+  coding_behaviour: all
+  device: cpu
+  enc_configs:
+    qp: 22
+    frame_rate: 30
+    intra_period: 32
+    n_bit: 10
+    cfg_file: /home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0/cfg/encoder_lowdelay_P_vtm.cfg
+    parallel_encoding: true
+    hash_check: 0
+  tools:
+    feature_reduction:
+      m65705:
+        enabled: false
+        task: obj
+      m65181:
+        enabled: false
+        split_point: ALT1
+      m65704-o:
+        enabled: true
+        task: obj
+      m65704-t:
+        enabled: false
+        split_point: ALT1
+    feature_restoration:
+      m65705:
+        enabled: ${codec.tools.feature_reduction.m65705.enabled}
+        task: ${codec.tools.feature_reduction.m65705.task}
+      m65181:
+        enabled: ${codec.tools.feature_reduction.m65181.enabled}
+        split_point: ${codec.tools.feature_reduction.m65181.split_point}
+      m65704-o:
+        enabled: ${codec.tools.feature_reduction.m65704-o.enabled}
+        task: ${codec.tools.feature_reduction.m65704-o.task}
+      m65704-t:
+        enabled: ${codec.tools.feature_reduction.m65704-t.enabled}
+        split_point: ${codec.tools.feature_reduction.m65704-t.split_point}
+    conversion:
+      bypass: false
+      n_bit: ${codec.enc_configs.n_bit}
+      packing:
+        channels_in_width: -1
+        channels_in_height: -1
+    inner_codec:
+      type: vtm
+      stash_outputs: true
+      enc_configs: ${codec.enc_configs}
+      enc_exe: /home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0/bin/EncoderAppStatic
+      dec_exe: /home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0/bin/DecoderAppStatic
+      merge_exe: /home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0/bin/parcatStatic

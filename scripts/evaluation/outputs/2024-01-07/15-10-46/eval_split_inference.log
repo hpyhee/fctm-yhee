@@ -1,0 +1,16 @@
+[2024-01-07 15:10:48,023][fvcore.common.checkpoint][INFO] - [Checkpointer] Loading from /home/yhee/Nvme_4T_1/proj/CompressAI-Vision/compressai_vision/model_wrappers/../../weights/detectron2/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x/139653917/model_final_2d9806.pkl ...
+[2024-01-07 15:10:48,028][fvcore.common.checkpoint][INFO] - [Checkpointer] Loading from /home/yhee/Nvme_4T_1/proj/CompressAI-Vision/compressai_vision/model_wrappers/../../weights/detectron2/COCO-InstanceSegmentation/mask_rcnn_X_101_32x8d_FPN_3x/139653917/model_final_2d9806.pkl ...
+[2024-01-07 15:10:48,285][fvcore.common.checkpoint][INFO] - Reading a file from 'Detectron2 Model Zoo'
+[2024-01-07 15:10:48,285][fvcore.common.checkpoint][INFO] - Reading a file from 'Detectron2 Model Zoo'
+[2024-01-07 15:10:51,418][detectron2.data.datasets.coco][INFO] - Loaded 5000 images in COCO format from /home/yhee/Nvme_4T_1/fcm_testdata/mpeg-oiv6/annotations/mpeg-oiv6-segmentation-coco.json
+[2024-01-07 15:10:51,418][detectron2.data.datasets.coco][INFO] - Loaded 5000 images in COCO format from /home/yhee/Nvme_4T_1/fcm_testdata/mpeg-oiv6/annotations/mpeg-oiv6-segmentation-coco.json
+[2024-01-07 15:10:51,440][Detectron2Dataset][INFO] - "mpeg-oiv6-segmentation" successfully registred.
+[2024-01-07 15:10:51,441][detectron2.data.common][INFO] - Serializing 5000 elements to byte tensors and concatenating them all ...
+[2024-01-07 15:10:51,442][Detectron2Dataset][INFO] - "mpeg-oiv6-segmentation" successfully registred.
+[2024-01-07 15:10:51,442][detectron2.data.common][INFO] - Serializing 5000 elements to byte tensors and concatenating them all ...
+[2024-01-07 15:10:51,463][detectron2.data.common][INFO] - Serialized dataset takes 15.33 MiB
+[2024-01-07 15:10:51,463][detectron2.data.dataset_mapper][INFO] - [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[2024-01-07 15:10:51,464][detectron2.data.common][INFO] - Serialized dataset takes 15.33 MiB
+[2024-01-07 15:10:51,464][detectron2.data.dataset_mapper][INFO] - [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[2024-01-07 15:10:51,656][OpenImagesChallengeEval][INFO] - Loading annotations for 5000 images and reformatting them for OpenImageChallenge Evaluator.
+[2024-01-07 15:10:51,656][OpenImagesChallengeEval][INFO] - Loading annotations for 5000 images and reformatting them for OpenImageChallenge Evaluator.
