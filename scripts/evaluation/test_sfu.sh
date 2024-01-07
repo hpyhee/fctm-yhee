@@ -1,14 +1,14 @@
 #!/bin/bash
+DEVICE="cpu"
 
 export DEVICE=${DEVICE}
 export DNNL_MAX_CPU_ISA=AVX2
 
-DEVICE="cpu"
 DATASET_DIR="/home/yhee/Nvme_4T_1/fcm_testdata"
 OUTPUT_DIR="/home/yhee/Nvme_4T_1/proj/exps/fctm-etri"
 VTM_PATH="/home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0"
 CV_PATH="/home/yhee/Nvme_4T_1/proj"
-EXP_NAME="_PreBM"
+EXP_NAME="_ce236_sfu"
 
 
 SEQs=(Traffic_2560x1600_30_val Kimono_1920x1080_24_val ParkScene_1920x1080_24_val Cactus_1920x1080_50_val BasketballDrive_1920x1080_50_val BasketballDrill_832x480_50_val BQTerrace_1920x1080_60_val BQSquare_416x240_60_val PartyScene_832x480_50_val RaceHorses_832x480_30_val RaceHorses_416x240_30_val BlowingBubbles_416x240_50_val BasketballPass_416x240_50_val BQMall_832x480_60_val)
