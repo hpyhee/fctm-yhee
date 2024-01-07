@@ -1,0 +1,11 @@
+defaults:
+  - paths: default
+  - env: default
+  - misc: default
+  - codec: fctm
+  - _self_
+
+inspection_mode: False
+codec:
+  output_name: "dec.h5"
+
