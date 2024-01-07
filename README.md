@@ -1,6 +1,6 @@
 # Introduction
 
-This project provides Core Experiment CE2.3.6 for Feature Compression Test Model (FCTM).
+This project provides Core Experiment CE2.3.5 (PreBM PCA) for Feature Compression Test Model (FCTM).
 
 # Our Computing Environment
 
@@ -33,17 +33,17 @@ source ./venv/bin/activate
 pip install -U pip
 ```
 
-Clone our CE software for the CE test ([FCM] CE 2.3.6 , Doc. m65704) at the ce236 branch from the fctm-yhee.git, and CompressAI-Vision with a tag of v1.1.3. Note that FCTM installs CompressAI-Vision with a tag of v1.1.2 (or latest) as a dependent library. Here, we install v1.1.3 that resolves minor issues checked in v1.1.2.
+Clone our CE software for the CE test ([FCM] CE 2.3.5 , Doc. m65704) at the ce235 branch from the fctm-yhee.git, and CompressAI-Vision with a tag of v1.1.3. Note that FCTM installs CompressAI-Vision with a tag of v1.1.2 (or latest) as a dependent library. Here, we install v1.1.3 that resolves minor issues checked in v1.1.2.
 
 ```
 git clone --depth 1 --branch v1.1.3 https://github.com/InterDigitalInc/CompressAI-Vision.git 
-git clone -b ce236 --single-branch https://mpeg.expert/software/hpyhee/fctm-yhee.git
+git clone -b ce235 --single-branch https://mpeg.expert/software/hpyhee/fctm-yhee.git
 ```
 
 Then, CompressAI-Vision should be installed and our CE software can be installed by: 
 
 ```
-bash scripts/install_PreBMECS.sh
+bash scripts/install_CE235.sh
 ```
 
 ## Evaluation
@@ -68,11 +68,11 @@ We provide the scripts to perform all performance points for each dataset.
 
 For the usage of the evaluation scripts, 
 ```
-bash scripts/test_hieve.sh
-bash scripts/test_sfu.sh
-bash scripts/test_tvd.sh
-bash scripts/test_oiv6_det.sh
-bash scripts/test_oiv6_seg.sh
+bash scripts/test_ce235_hieve.sh
+bash scripts/test_ce235_sfu.sh
+bash scripts/test_ce235_tvd.sh
+bash scripts/test_ce235_oiv6_det.sh
+bash scripts/test_ce235_oiv6_seg.sh
 ```
 
 Please edit the evaluation scripts with your own working directory:
@@ -89,13 +89,13 @@ For example:
 - OUTPUT_DIR="/home/yhee/Nvme_4T_1/proj/exps/fctm-etri"
 - VTM_PATH="/home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0"
 - CV_PATH="/home/yhee/Nvme_4T_1"
-- EXP_NAME="_oiv6_det_ce236"
+- EXP_NAME="_ce236_oiv6_det"
 
 All output files and results are stored in the directory of OUTPUT_DIR
 
 Note that the EXP_NAME for OIV6 detection should be different from EXP_NAME for OIV6 segmentation.
 
-Please edit the number of thread to run in parallel for test_oiv6_det.sh and test_oiv6_seg.sh:
+Please edit the number of thread to run in parallel for test_ce235_oiv6_det.sh and test_ce235_oiv6_seg.sh:
 ```
 MAX_PARALLEL="number of thread"
 ```
