@@ -21,7 +21,7 @@ for SEQ in "${SEQs[@]}";do
   elif [ $SEQ == ParkScene_1920x1080_24_val ];then
     QPs=(24 27 30 32)
   elif [ $SEQ == Cactus_1920x1080_50_val ];then
-    QPs=(41 47 49 51)
+    QPs=(41 44 45 47)
   elif [ $SEQ == BasketballDrive_1920x1080_50_val ];then
     QPs=(22 24 25 27)
   elif [ $SEQ == BasketballDrill_832x480_50_val ];then

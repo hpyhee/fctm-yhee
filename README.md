@@ -43,7 +43,7 @@ git clone -b ce236 --single-branch https://mpeg.expert/software/hpyhee/fctm-yhee
 Then, CompressAI-Vision should be installed and our CE software can be installed by: 
 
 ```
-bash scripts/install_PreBMECS.sh
+bash scripts/install_ce236.sh
 ```
 
 ## Evaluation
