@@ -4,7 +4,6 @@ DEVICE="cpu"
 
 export DEVICE=${DEVICE}
 export DNNL_MAX_CPU_ISA=AVX2
-#OIV6 HNU ENCODE TEST
 
 DATASET_DIR="/home/yhee/Nvme_4T_1/fcm_testdata"
 OUTPUT_DIR="/home/yhee/Nvme_4T_1/proj/exps/fctm-etri"

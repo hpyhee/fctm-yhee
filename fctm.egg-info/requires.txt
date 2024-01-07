@@ -3,14 +3,14 @@ omegaconf
 yuvio
 
 [all]
-sphinxcontrib-mermaid
-black
 pytest
-isort
-sphinx-book-theme
+black
 pytest-cov
-Jinja2<3.1
+sphinx-book-theme
+isort
+sphinxcontrib-mermaid
 sphinx
+Jinja2<3.1
 
 [dev]
 pytest

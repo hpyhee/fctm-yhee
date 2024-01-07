@@ -1,9 +1,10 @@
 #!/bin/bash
 
+DEVICE="cpu"
+
 export DEVICE=${DEVICE}
 export DNNL_MAX_CPU_ISA=AVX2
 
-DEVICE="cpu"
 DATASET_DIR="/home/yhee/Nvme_4T_1/fcm_testdata"
 OUTPUT_DIR="/home/yhee/Nvme_4T_1/proj/exps/fctm-etri"
 VTM_PATH="/home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0"

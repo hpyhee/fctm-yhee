@@ -1,9 +1,10 @@
 #!/bin/bash
 
+DEVICE="cpu"
+
 export DEVICE=${DEVICE}
 export DNNL_MAX_CPU_ISA=AVX2
 
-DEVICE="cpu"
 DATASET_DIR="/home/yhee/Nvme_4T_1/fcm_testdata"
 OUTPUT_DIR="/home/yhee/Nvme_4T_1/proj/exps/fctm-etri"
 VTM_PATH="/home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0"
@@ -21,7 +22,7 @@ for SEQ in "${SEQs[@]}";do
   elif [ $SEQ == ParkScene_1920x1080_24_val ];then
     QPs=(24 27 30 32)
   elif [ $SEQ == Cactus_1920x1080_50_val ];then
-    QPs=(41 44 45 47)
+    QPs=(41 44 45 4k7)
   elif [ $SEQ == BasketballDrive_1920x1080_50_val ];then
     QPs=(22 24 25 27)
   elif [ $SEQ == BasketballDrill_832x480_50_val ];then
