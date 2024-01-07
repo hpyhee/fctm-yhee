@@ -89,7 +89,7 @@ For example:
 - OUTPUT_DIR="/home/yhee/Nvme_4T_1/proj/exps/fctm-etri"
 - VTM_PATH="/home/yhee/Nvme_4T_1/proj/VTM/VTM-12.0"
 - CV_PATH="/home/yhee/Nvme_4T_1"
-- EXP_NAME="_ce236_oiv6_det"
+- EXP_NAME="_ce235_oiv6_det"
 
 All output files and results are stored in the directory of OUTPUT_DIR
 
