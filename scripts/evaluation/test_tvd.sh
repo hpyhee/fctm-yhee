@@ -24,6 +24,6 @@ bash tvd/fctm_eval_on_tvd_tracking_di.sh ${DATASET_DIR} ${VTM_PATH} ${OUTPUT_DIR
 bash tvd/fctm_eval_on_tvd_tracking_di.sh ${DATASET_DIR} ${VTM_PATH} ${OUTPUT_DIR} ${EXP_NAME} ${DEVICE} 28 "TVD-03" ""
 bash tvd/fctm_eval_on_tvd_tracking_di.sh ${DATASET_DIR} ${VTM_PATH} ${OUTPUT_DIR} ${EXP_NAME} ${DEVICE} 30 "TVD-03" ""
 bash tvd/fctm_eval_on_tvd_tracking_di.sh ${DATASET_DIR} ${VTM_PATH} ${OUTPUT_DIR} ${EXP_NAME} ${DEVICE} 32 "TVD-03" ""
-bash tvd/fctm_eval_on_tvd_tracking_di.sh ${DATASET_DIR} ${VTM_PATH} ${OUTPUT_DIR} ${EXPERIMENT} ${DEVICE} 33 "TVD-03" ""
+bash tvd/fctm_eval_on_tvd_tracking_di.sh ${DATASET_DIR} ${VTM_PATH} ${OUTPUT_DIR} ${EXP_NAME} ${DEVICE} 33 "TVD-03" ""
 
 python3 ${CV_PATH}/CompressAI-Vision/utils/fcm_cttc_output_gen.py -r ${OUTPUT_DIR}/split-inference-video/fctm${EXP_NAME}/MPEGTVDTRACKING -dp ${DATASET_DIR}/tvd_tracking -dn "TVD"
